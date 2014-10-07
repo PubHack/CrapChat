@@ -35,6 +35,11 @@
 	var channel = pusher.subscribe('crap');
 	channel.bind('new-crap', function(data) {
 		var templ = $($('#footemplate').text());
-		
+		templ.find('.x-from').text(data.from);
+		templ.find('.x-to').text(data.to);
+		templ.find('.x-date').text(data.date);
+		templ.find('.x-key').text(data.key);
+		templ.find('.x-img').get(0).src = '/crap/classy/'+data.key;
+		$('.craps-list').prepend(templ);
 	});
 </script>

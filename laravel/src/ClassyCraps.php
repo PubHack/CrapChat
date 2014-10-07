@@ -16,7 +16,7 @@ class ClassyCraps {
 
     public function latestSent($limit = 10)
     {
-        return \SentCrap::take($limit)->get()->map(function($crap) {
+        return \SentCrap::orderBy('id', 'desc')->take($limit)->get()->map(function($crap) {
             return (object) [
                 'from' => $crap->from,
                 'to' => $crap->to,
