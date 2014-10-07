@@ -4,7 +4,7 @@ class SignupController extends BaseController {
 
 	public function index()
 	{
-		return View::make('signup');
+		return View::make('signup.index');
 	}
 
 	public function store()
@@ -16,10 +16,12 @@ class SignupController extends BaseController {
 			return Redirect::back();
 		}
 
-		User::make([
+		$user = User::make([
 			'username' => Input::get('username'),
 			'password' => Input::get('password'),
 		]);
+
+		return View::make('signup.success', compact('user'));
 	}
 
 }
