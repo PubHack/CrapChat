@@ -3,3 +3,4 @@ vendor
 node_modules
 .idea
 laravel/app/storage/craps
+npm-debug.log
