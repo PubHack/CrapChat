@@ -4,7 +4,7 @@ use CrapChat\SnapchatService;
 
 class SignupController extends BaseController {
 
-	public function __construct(SnapchatUService $service)
+	public function __construct(SnapchatService $service)
 	{
 		$this->snapchatService = $service;
 	}
