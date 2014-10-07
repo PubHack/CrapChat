@@ -16,10 +16,15 @@ class SignupController extends BaseController {
 			return Redirect::back();
 		}
 
-		$user = User::make([
-			'username' => Input::get('username'),
-			'password' => Input::get('password'),
-		]);
+		try {
+			$user = User::make([
+				'username' => Input::get('username'),
+				'password' => Input::get('password'),
+			]);
+		}
+		catch (Exception $e) {
+			return Redirect::back();
+		}
 
 		return View::make('signup.success', compact('user'));
 	}
