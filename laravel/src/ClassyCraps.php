@@ -21,6 +21,7 @@ class ClassyCraps {
                 'from' => $crap->from,
                 'to' => $crap->to,
                 'key' => $crap->key,
+                'date' => $crap->created_at,
             ];
         });
     }

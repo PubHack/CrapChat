@@ -1,22 +1,24 @@
 <?php
 
-use CrapChat\CrapsService;
+use CrapChat\ClassyCraps;
 
 class CrapsController extends BaseController {
 
     /**
-     * @var CrapsService
+     * @var ClassyCraps
      */
     private $craps;
 
-    public function __construct(CrapsService $craps)
+    public function __construct(ClassyCraps $craps)
     {
         $this->craps = $craps;
     }
 
     public function showAllCraps()
     {
-        $this->craps->latest();
+        $craps = $this->craps->latestSent();
+
+        return View::make('craps', compact('craps'));
     }
 
 } 
