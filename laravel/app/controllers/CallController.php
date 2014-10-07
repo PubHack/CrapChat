@@ -82,6 +82,10 @@ class CallController extends BaseController {
 			'from' => $user->username,
 			'to' => $username->name,
 		]);
+
+		$response = new Services_Twilio_Twiml();
+		$response->say('Thank you, your crapchat has been sent. Goodbye');
+		print $response;
 	}
 
 }
