@@ -37,7 +37,7 @@
 </div>
 
 <form action="/draw" method="post">
-	<input type="text" id="output" name="drawing">
+	<input type="hidden" id="output" name="drawing">
 	<button id="generate">Generate Code</button>
 </form>
 
