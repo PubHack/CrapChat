@@ -4,7 +4,7 @@ use Illuminate\Support\Collection;
 use Snapchat;
 use User;
 
-class SnapchatUser {
+class SnapchatService {
 
     public function login($username, $password)
     {
