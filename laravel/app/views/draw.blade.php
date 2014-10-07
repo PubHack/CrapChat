@@ -55,7 +55,7 @@
 		var map = {{ json_encode($colors) }};
 		return {
 			fromColor: function(color) {
-				return map[color ? color : 'rgb(0, 0, 0)'];
+				return map[color ? color : 'rgb(0,0,0)'];
 			},
 			getAll: function() {
 				return map;
@@ -93,11 +93,35 @@
 		});
 	});
 
+	var lastInArray = function(arr) {
+		return arr[arr.length - 1];
+	};
+
 	document.querySelector('#generate').addEventListener('click', function(btn) {
 		var output = qs2ar('td.drawable').map(function(td) {
-			return colorMap.fromColor(td.style.background);
+			var background = td.style.background;
+			background = background.replace(/\s+/g, '');
+			return colorMap.fromColor(background);
 		});
-		document.querySelector('#output').textContent = output;
+
+		var compr = [];
+		var last = null;
+
+		output.forEach(function(curr) {
+			if (curr === last) {
+				lastInArray(compr).count++;
+			}
+			else if (compr) {
+				compr.push({ value: curr, count: 1 });
+			}
+			last = curr;
+		});
+
+		var str = compr.map(function(curr) {
+			return curr.count + '*' + curr.value;
+		}).join(' ');
+
+		document.querySelector('#output').textContent = str;
 	});
 </script>
 

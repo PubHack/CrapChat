@@ -15,10 +15,16 @@ class DrawController extends BaseController {
      */
     private $colorMap;
 
-    public function __construct(Factory $view, ColorMap $colorMap)
+    /**
+     * @var \CrapChat\ImageGenerator
+     */
+    private $imageGenerator;
+
+    public function __construct(Factory $view, ColorMap $colorMap, \CrapChat\ImageGenerator $imageGenerator)
     {
         $this->view = $view;
         $this->colorMap = $colorMap;
+        $this->imageGenerator = $imageGenerator;
     }
 
     public function showDraw()
