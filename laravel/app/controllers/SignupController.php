@@ -1,12 +1,12 @@
 <?php
 
-use CrapChat\SnapchatUser;
+use CrapChat\SnapchatService;
 
 class SignupController extends BaseController {
 
-	public function __construct(SnapchatUser $snapchat)
+	public function __construct(SnapchatUService $service)
 	{
-		$this->snapchat = $snapchat;
+		$this->snapchatService = $service;
 	}
 
 	public function index()
@@ -16,7 +16,7 @@ class SignupController extends BaseController {
 
 	public function store()
 	{
-		if ( ! $this->snapchat->login(Input::get('username'), Input::get('password')))
+		if ( ! $this->snapchatService->login(Input::get('username'), Input::get('password')))
 		{
 			return Redirect::back();
 		}
