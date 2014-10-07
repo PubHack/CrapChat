@@ -14,11 +14,6 @@ class CrapsService {
         $this->imageGenerator = $imageGenerator;
     }
 
-    public function latest($limit = 10)
-    {
-        return \Crap::limit($limit);
-    }
-
     /**
      * @param $key
      * @return string|bool

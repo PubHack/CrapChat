@@ -16,7 +16,7 @@ class CrapsController extends BaseController {
 
     public function showAllCraps()
     {
-        dd($this->craps->latest());
+        $this->craps->latest();
     }
 
 } 

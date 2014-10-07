@@ -77,6 +77,11 @@ class CallController extends BaseController {
 
 		$this->snapchat->send($image->getImageBlob(), $username->name, 10);
 
+		SentCrap::create([
+			'key' => $crapCode,
+			'from' => $user->username,
+			'to' => $username->name,
+		]);
 	}
 
 }

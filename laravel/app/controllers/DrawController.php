@@ -1,5 +1,6 @@
 <?php
 
+use CrapChat\ClassyCraps;
 use CrapChat\ColorMap;
 use CrapChat\CrapsService;
 use Illuminate\Http\Request;
@@ -72,6 +73,13 @@ class DrawController extends BaseController {
         if ( ! $filename) return;
 
         $img = file_get_contents($filename);
+
+        return new Response($img, 200, ['Content-Type' => 'image/jpg']);
+    }
+
+    public function viewClassyCrapImg($key)
+    {
+        $img = App::make(ClassyCraps::class)->make($key);
 
         return new Response($img, 200, ['Content-Type' => 'image/jpg']);
     }

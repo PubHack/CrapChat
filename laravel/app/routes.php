@@ -22,6 +22,7 @@ Route::get('/draw', 'DrawController@showDraw');
 Route::post('/draw', 'DrawController@storeDrawing');
 Route::get('/crap/{key}', 'DrawController@viewCrap');
 Route::get('/crap/img/{key}', 'DrawController@viewCrapImg');
+Route::get('/crap/classy/{key}', 'DrawController@viewClassyCrapImg');
 
 Route::get('/craps', 'CrapsController@showAllCraps');
 
