@@ -74,9 +74,8 @@ class CallController extends BaseController {
 		$username = $friends[$friendId-1];
 
 		$image = $this->craps->make($crapCode);
-		Log::debug($image);
 
-		$this->snapchat->send($image, $username->name, 10);
+		$this->snapchat->send($image->getImageBlob(), $username->name, 10);
 
 	}
 

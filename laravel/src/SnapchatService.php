@@ -28,12 +28,9 @@ class SnapchatService {
         return new Collection(array_slice($this->user->getFriends(), 0, 5));
     }
 
-    public function send($imgPath, $recipient, $noOfSec)
+    public function send($imgData, $recipient, $noOfSec)
     {
-        $upload = $this->user->upload(
-            Snapchat::MEDIA_IMAGE,
-            file_get_contents($imgPath)
-        );
+        $upload = $this->user->upload(Snapchat::MEDIA_IMAGE, $imgData);
 
         $this->user->send($upload, [$recipient], $noOfSec);
     }

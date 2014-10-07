@@ -40,7 +40,7 @@ class ClassyCraps {
             '1.jpg',
         ];
 
-        return public_path() . '/bgs/' . array_rand($backgrounds);
+        return public_path() . '/bgs/' . $backgrounds[array_rand($backgrounds)];
     }
 
 } 
