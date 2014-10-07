@@ -14,6 +14,10 @@ class CrapsService {
         $this->imageGenerator = $imageGenerator;
     }
 
+    /**
+     * @param $key
+     * @return string|bool
+     */
     public function find($key)
     {
         $crap = \Crap::where('key', $key)->first();
