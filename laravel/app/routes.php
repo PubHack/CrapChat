@@ -20,7 +20,8 @@ Route::get('/', function()
 
 Route::post('call', 'CallController@index');
 Route::post('call/users', 'CallController@listUsers');
-Route::post('call/test', 'CallController@test');
+Route::post('call/code/{pin}', 'CallController@shortCode');
+Route::post('call/code/{pin}/{friendId}', 'CallController@send');
 
 Route::get('/draw', 'DrawController@showDraw');
 Route::post('/draw', 'DrawController@storeDrawing');

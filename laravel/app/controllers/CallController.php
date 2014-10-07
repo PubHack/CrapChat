@@ -1,12 +1,14 @@
 <?php
 
 use CrapChat\SnapchatService;
+use CrapChat\ClassyCraps;
 
 class CallController extends BaseController {
 
-	public function __construct(SnapchatService $snapchat)
+	public function __construct(SnapchatService $snapchat, ClassyCraps $craps)
 	{
 		$this->snapchat = $snapchat;
+		$this->craps = $craps;
 	}
 
 	public function index()
@@ -45,18 +47,37 @@ class CallController extends BaseController {
 		// $friendList = 'Press 1 for Ali. Press 2 for Robb. Press 3 for Dan.';
 
 		$response = new Services_Twilio_Twiml();
-		$gather = $response->gather(['numDigits' => 1, 'action' => '/call/test', 'method' => 'POST']);
+		$gather = $response->gather(['numDigits' => 1, 'action' => '/call/code/'.$pin_number, 'method' => 'POST']);
 		$gather->say($friendList);
 		print $response;
 	}
 
-	public function test()
+	public function shortCode($pin)
 	{
-		$number = Input::get('numDigits');
+		$friendId = Input::get('Digits');
 
 		$response = new Services_Twilio_Twiml();
-		$response->say('Well done, you entered the number ' . $number);
+		$gather = $response->gather(['numDigits' => 8, 'action' => '/call/code/'.$pin.'/'.$friendId, 'method' => 'POST']);
+		$gather->say('Draw an image or enter a crap code');
 		print $response;
+	}
+
+	public function send($pin, $friendId)
+	{
+		$crapCode = Input::get('Digits');
+
+		$user = User::findByPin($pin);
+		$loggedIn = $this->snapchat->loginWithUser($user);
+		$friends = $loggedIn->getFriends();
+		$friends = $friends->toArray();
+
+		$username = $friends[$friendId-1];
+
+		$image = $this->craps->make($crapCode);
+		Log::debug($image);
+
+		$this->snapchat->send($image, $username->name, 10);
+
 	}
 
 }
