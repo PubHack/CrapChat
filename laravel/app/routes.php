@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('signup', 'SignupController');
+
 Route::get('/', function()
 {
 	return View::make('hello');
@@ -22,4 +24,3 @@ Route::post('call/test', 'CallController@test');
 
 Route::get('/draw', 'DrawController@showDraw');
 Route::post('/draw', 'DrawController@storeDrawing');
-
