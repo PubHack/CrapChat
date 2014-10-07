@@ -2,7 +2,7 @@
 
 use Imagick;
 
-class ClassyCrap {
+class ClassyCraps {
 
     /**
      * @var CrapsService
