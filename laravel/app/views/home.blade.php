@@ -6,7 +6,9 @@
 	<h2 class="page__subtitle">SnapChat for Phone Boxes</h2>
 
 	<div class="copy">
-		This is some copy text explaining exactly how CrapChat works
+		Tired of finding yourself out-and-about with a dead phone, when you desperately need to send a <em>naughty SnapChat</em>?
+		<br><br>
+		Sign up below, and send your Snaps from any public telephone!
 	</div>
 
 	<a href="#" class="button page__get-started">Let's Get Started!</a>
