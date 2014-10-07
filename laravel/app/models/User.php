@@ -29,6 +29,7 @@ class User extends Eloquent {
 
 		$user->username = $params['username'];
 		$user->password = crypt($params['password']);
+		$user->pin = self::generatePin();
 
 		if ( ! $user->save())
 		{
@@ -36,6 +37,12 @@ class User extends Eloquent {
 		}
 
 		return $user;
+	}
+
+	protected static function generatePin()
+	{
+		$pool = '0123456789';
+		return substr(str_shuffle(str_repeat($pool, 5)), 0, 4);
 	}
 
 }
