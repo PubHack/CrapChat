@@ -25,10 +25,10 @@
 					<img src="/assets/img/snapchat.jpg" alt="">
 				</div>
 				<div class="overlay__inputs">
-					<input type="text" placeholder="Username...">
-					<input type="text" placeholder="Password...">
+					<input type="text" name="username" id="username" placeholder="Username...">
+					<input type="password" name="password" id="password" placeholder="Password...">
 				</div>
-				<a class="button overlay__signin" href="#">Sign In With Snapchat</a>
+				<a class="button overlay__signin" href="#" id="signup">Sign In With Snapchat</a>
 			</form>
 		</div>
 		<div class="overlay--success"></div>

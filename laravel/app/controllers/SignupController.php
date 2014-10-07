@@ -28,10 +28,10 @@ class SignupController extends BaseController {
 			]);
 		}
 		catch (Exception $e) {
-			return Redirect::back();
+			throw new Exception('User save failed');
 		}
 
-		return View::make('signup.success', compact('user'));
+		return $user;
 	}
 
 }

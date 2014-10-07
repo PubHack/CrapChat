@@ -11,7 +11,8 @@
 |
 */
 
-Route::resource('/', 'SignupController');
+Route::get('/', 'SignupController@index');
+Route::post('signup', 'SignupController@store');
 
 Route::post('call', 'CallController@index');
 Route::post('call/users', 'CallController@listUsers');

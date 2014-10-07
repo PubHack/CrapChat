@@ -14,4 +14,21 @@ $(function() {
 		$('.is-blurred').removeClass('.is-blurred');
 	});
 
+	$('#signup').click(function(e) {
+		e.preventDefault();
+		var username = $('#username').val();
+		var password = $('#password').val();
+
+		$.ajax('/signup', {
+			data: {
+				username: username,
+				password: password
+			},
+			method: 'post',
+			success: function(data) {
+				$('.overlay__inputs').html('<p>You\'ve successfully signed up for CrapChat.</p><p>Your pin code is: ' + data.pin + '</p>');
+			}
+		});
+	});
+
 });
