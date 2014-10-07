@@ -17,3 +17,4 @@ Route::get('/', function()
 });
 
 Route::get('/draw', 'DrawController@showDraw');
+
