@@ -16,5 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
+Route::post('call', 'CallController@index');
+Route::post('call/users', 'CallController@listUsers');
+Route::post('call/test', 'CallController@test');
 Route::get('/draw', 'DrawController@showDraw');
-
