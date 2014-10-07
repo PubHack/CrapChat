@@ -8,6 +8,16 @@ class ImageGenerator {
     const HD_SCALE = 20;
 
     /**
+     * @var ColorMap
+     */
+    private $colorMap;
+
+    public function __construct(ColorMap $colorMap)
+    {
+        $this->colorMap = $colorMap;
+    }
+
+    /**
      * @param $numbers  Array of 400 digits
      * @return Imagick  The generated image
      */
@@ -35,7 +45,7 @@ class ImageGenerator {
     private function convertNumbersToRgb($numbers)
     {
         // lol, can't remember how this works. only wrote it half hour ago
-        
+
         $pixels = [];
         $pixelsIn2 = [];
         $hdScale = self::HD_SCALE;
@@ -65,16 +75,7 @@ class ImageGenerator {
      */
     private function convertNumberToRgb($number)
     {
-        $colourMap = [
-			0 => [  0,   0,   0],
-			1 => [255, 255, 255],
-			2 => [255,   0,   0],
-			3 => [100, 100, 100],
-        ];
-
-        if ( ! array_key_exists($number, $colourMap)) $number = 0;
-
-        return $colourMap[$number];
+        return $this->colorMap->keyToRgb($number);
     }
 
 } 

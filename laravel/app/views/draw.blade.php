@@ -55,7 +55,6 @@
 		var map = {{ json_encode($colors) }};
 		return {
 			fromColor: function(color) {
-			debugger
 				return map[color ? color : 'rgb(0, 0, 0)'];
 			},
 			getAll: function() {
