@@ -74,7 +74,7 @@ class User extends Eloquent {
 			return false;
 		}
 
-		return $user;
+		return $user->first();
 	}
 
 

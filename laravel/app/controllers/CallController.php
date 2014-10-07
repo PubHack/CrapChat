@@ -1,6 +1,13 @@
 <?php
 
+use CrapChat\SnapchatService;
+
 class CallController extends BaseController {
+
+	public function __construct(SnapchatService $snapchat)
+	{
+		$this->snapchat = $snapchat;
+	}
 
 	public function index()
 	{
@@ -13,25 +20,29 @@ class CallController extends BaseController {
 	public function listUsers()
 	{
 		Log::debug(print_r(Input::all(), true));
-		$pin_number = Input::get('numDigits');
-		// if ( ! $user = User::findByPin($pin_number))
-		// {
-		// 	$response = new Services_Twilio_Twiml();
-		// 	$response->say('Sorry user not found, please try again')
-		// 	->redirect('call');
-		// 	print $response;
-		// }
+		$pin_number = Input::get('Digits');
+		if ( ! $user = User::findByPin($pin_number))
+		{
+			$response = new Services_Twilio_Twiml();
+			$response->say('Sorry user not found, please try again')
+			->redirect('call');
+			print $response;
+		}
 
-		// $friends = $user->getFriends();
-		// $friends->toArray();
+		$loggedIn = $this->snapchat->loginWithUser($user);
 
-		// $friendList = '';
+		$friends = $loggedIn->getFriends();
 
-		// foreach ($friends as $key => friend) {
-		// 	$friendList = $friendList . ' press ' . $key . ' for ' + $friend->name + ' ';
-		// }
+		$friends = $friends->toArray();
+
+		$friendList = '';
+
+		foreach ($friends as $key => $friend) {
+			$select = $key + 1;
+			$friendList .= 'press ' . $select . ' for ' . $friend->name . '. ';
+		}
 		
-		$friendList = 'Press 1 for Ali. Press 2 for Robb. Press 3 for Dan.';
+		// $friendList = 'Press 1 for Ali. Press 2 for Robb. Press 3 for Dan.';
 
 		$response = new Services_Twilio_Twiml();
 		$gather = $response->gather(['numDigits' => 1, 'action' => '/call/test', 'method' => 'POST']);
