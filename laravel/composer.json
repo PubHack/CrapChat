@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"jorgenphi/php-snapchat": "dev-master",
-		"twilio/sdk": "dev-master"
+		"twilio/sdk": "dev-master",
+		"pusher/pusher-php-server": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
