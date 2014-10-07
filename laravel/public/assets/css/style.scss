@@ -253,3 +253,74 @@ body {
 		}
 	}
 }
+
+
+
+/* FEED */
+
+.feed {
+	&__wrapper {
+		@include site-width;
+		@include clearfix;
+		padding: 40px 0;
+	}
+	&__single {
+		float: left;
+		width: 20%;
+		position: relative;
+		img {
+			max-width: 100%;
+			float: left;
+		}		
+	}
+	&__foot {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0, 0, 0, 0.3);
+		padding: 10px;
+		.feed-left {
+			float: left;	
+			padding: 3px 0;
+		}
+		.feed-right {
+			float: right;
+			padding: 3px 0;
+		}
+		.sender-name {
+			margin: 0;
+			color: white;
+			@include clearfix;
+			font-size: 14px;
+		}
+		.rec-name {
+			margin: 0;
+			color: white;
+			@include clearfix;
+			font-size: 14px;
+		}
+		.send-time {
+			margin: 0;
+			color: white;
+			@include clearfix;
+		}
+		.send-code {
+			margin: 0;
+			color: white;
+			@include clearfix;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

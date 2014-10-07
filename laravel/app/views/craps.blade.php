@@ -1,16 +1,31 @@
 <h3>All Craps</h3>
 
-<div class="craps-list">
+<div class="feed__wrapper">
 
 	@foreach ($craps as $crap)
+		
+			<div class="feed__single">
+				<img src="/crap/classy/{{ $crap->key }}" alt="">
+				<div class="feed__foot">
+					<h1 class="sender-name">
+						<span class="feed-left">Sender</span>
+						<span class="feed-right">{{ $crap->from }}</span>
+					</h1>
+					<h2 class="rec-name">
+						<span class="feed-left">Reciever</span>
+						<span class="feed-right">{{ $crap->to }}</span>
+					</h2>
+					<p class="send-time">
+						<span class="feed-left">Date</span>
+						<span class="feed-right">{{ $crap->date->format('jS F, Y') }}</span>
+					</p>
+					<p class="send-code">
+						<span class="feed-left">Code</span>
+						<span class="feed-right">{{ $crap->key }}</span>
+					</p>
+				</div>
+			</div>
 
-		<div>
-			Sent by <span>{{ $crap->from }}</span> to {{ $crap->to }} at {{ $crap->date->format('jS F, Y') }}.
-		</div>
-		<div>
-			<img src="/crap/classy/{{ $crap->key }}">
-		</div>
-		<div><code>{{ $crap->key }}</code></div>
 
 	@endforeach
 
