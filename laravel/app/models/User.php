@@ -25,7 +25,7 @@ class User extends Eloquent {
 
 	public static function make(array $params)
 	{
-		if ($foo = User::where('username', $params['username'])->count())
+		if (User::where('username', $params['username'])->count())
 		{
 			throw new Exception('User already exists');
 		}
