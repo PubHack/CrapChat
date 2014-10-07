@@ -1,0 +1,17 @@
+{
+	"name": "CrapChat",
+	"description": "#DDD are back, bitches.",
+	"version": "0.1.0",
+	"homepage": "http://devsdodesign.com",
+	"author": {
+		"name": "Ed Poole",
+		"email": "ed@edpoole.me",
+		"url": "http://edpoole.me"
+	},
+	"devDependencies": {
+		"grunt": "0.4.4",
+		"grunt-sass": "0.14.2",
+		"grunt-contrib-watch": "0.6.1",
+		"grunt-autoprefixer": "1.0.1"
+	}
+}
