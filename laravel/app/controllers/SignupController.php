@@ -1,6 +1,13 @@
 <?php
 
+use CrapChat\SnapchatUser;
+
 class SignupController extends BaseController {
+
+	public function __construct(SnapchatUser $snapchat)
+	{
+		$this->snapchat = $snapchat;
+	}
 
 	public function index()
 	{
@@ -9,9 +16,7 @@ class SignupController extends BaseController {
 
 	public function store()
 	{
-		$snapchat = new Snapchat(Input::get('username'), Input::get('password'));
-
-		if ( ! $snapchat->auth_token)
+		if ( ! $this->snapchat->login(Input::get('username'), Input::get('password')))
 		{
 			return Redirect::back();
 		}
