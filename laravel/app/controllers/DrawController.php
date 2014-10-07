@@ -79,8 +79,6 @@ class DrawController extends BaseController {
 
     public function viewClassyCrapImg($key)
     {
-        // TODO: REMOVE THIS LINE LATER!!!
-        return new Response(file_get_contents(public_path().'/bgs/1.jpg'), 200, ['Content-Type' => 'image/jpg']);
 
         $img = App::make(ClassyCraps::class)->make($key);
 
