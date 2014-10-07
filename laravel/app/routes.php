@@ -24,3 +24,6 @@ Route::post('call/test', 'CallController@test');
 
 Route::get('/draw', 'DrawController@showDraw');
 Route::post('/draw', 'DrawController@storeDrawing');
+Route::get('/crap/{key}', 'DrawController@viewCrap');
+Route::get('/crap/img/{key}', 'DrawController@viewCrapImg');
+

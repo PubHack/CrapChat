@@ -1,7 +1,10 @@
 <?php
 
 use CrapChat\ColorMap;
+use CrapChat\CrapsService;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
 use Illuminate\View\Factory as ViewFactory;
 
 class DrawController extends BaseController {
@@ -21,11 +24,23 @@ class DrawController extends BaseController {
      */
     private $colorMap;
 
-    public function __construct(Request $request, ViewFactory $view, ColorMap $colorMap)
+    /**
+     * @var CrapsService
+     */
+    private $craps;
+
+    /**
+     * @var Redirector
+     */
+    private $redirector;
+
+    public function __construct(Request $request, ViewFactory $view, ColorMap $colorMap, CrapsService $craps, Redirector $redirector)
     {
         $this->request = $request;
         $this->view = $view;
         $this->colorMap = $colorMap;
+        $this->craps = $craps;
+        $this->redirector = $redirector;
     }
 
     public function showDraw()
@@ -38,10 +53,27 @@ class DrawController extends BaseController {
     public function storeDrawing()
     {
         $x = $this->request->get('drawing');
-        $gen = App::make(\CrapChat\ImageGenerator::class);
-        $foo = $gen->fromNumbers(explode(',', $x));
-        $foo->writeImage(storage_path().'/'.uniqid('crapchat', true).'.jpg');
-        return new \Illuminate\Http\Response($foo, 200, ['Content-Type' => 'image/jpg']);
+        $key = $this->craps->save(explode(',', $x));
+
+        return $this->redirector->to('/crap/'.$key);
+    }
+
+    public function viewCrap($key)
+    {
+        if ( ! $this->craps->find($key)) return 'Nope, nothing found';
+
+        return $this->view->make('crap', compact('filename', 'key'));
+    }
+
+    public function viewCrapImg($key)
+    {
+        $filename = $this->craps->find($key);
+
+        if ( ! $filename) return;
+
+        $img = file_get_contents($filename);
+
+        return new Response($img, 200, ['Content-Type' => 'image/jpg']);
     }
 
     private function formatColors()
