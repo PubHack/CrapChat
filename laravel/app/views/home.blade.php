@@ -20,7 +20,7 @@
 
 	<div class="overlay__wrapper">
 		<div class="overlay--signup">
-			<form action="/signup" method="post">
+			<form action="/" method="post">
 				<div class="overlay__title">
 					<img src="/assets/img/snapchat.jpg" alt="">
 				</div>

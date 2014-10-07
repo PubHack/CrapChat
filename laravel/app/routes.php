@@ -11,12 +11,7 @@
 |
 */
 
-Route::resource('signup', 'SignupController');
-
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::resource('/', 'SignupController');
 
 Route::post('call', 'CallController@index');
 Route::post('call/users', 'CallController@listUsers');

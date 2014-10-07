@@ -444,7 +444,7 @@ html {
   height: 100%; }
 
 body {
-  background: #A92E38 url(/bg.jpg) repeat;
+  background: #A92E38 url(../img/bg.jpg) repeat;
   animation: animatedBackground 40s linear infinite;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   min-height: 100%; }
