@@ -53,7 +53,7 @@ class ImageGenerator {
         // scale vertically
         foreach (array_chunk($numbers, 20) as $chunk) {
             for ($i=0; $i < $hdScale; $i++) {
-                array_push($pixelsIn2, ...$chunk);
+                $pixelsIn2 = array_merge($pixelsIn2, $chunk);
             }
         }
 
