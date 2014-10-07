@@ -502,3 +502,63 @@ body {
       text-decoration: none; }
       .footer__ddd a:hover {
         text-decoration: underline; }
+
+/* FEED */
+.feed__wrapper {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0; }
+  .feed__wrapper:after {
+    clear: both;
+    display: table;
+    content: ""; }
+.feed__single {
+  float: left;
+  width: 20%;
+  position: relative; }
+  .feed__single img {
+    max-width: 100%;
+    float: left; }
+.feed__foot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px; }
+  .feed__foot .feed-left {
+    float: left;
+    padding: 3px 0; }
+  .feed__foot .feed-right {
+    float: right;
+    padding: 3px 0; }
+  .feed__foot .sender-name {
+    margin: 0;
+    color: white;
+    font-size: 14px; }
+    .feed__foot .sender-name:after {
+      clear: both;
+      display: table;
+      content: ""; }
+  .feed__foot .rec-name {
+    margin: 0;
+    color: white;
+    font-size: 14px; }
+    .feed__foot .rec-name:after {
+      clear: both;
+      display: table;
+      content: ""; }
+  .feed__foot .send-time {
+    margin: 0;
+    color: white; }
+    .feed__foot .send-time:after {
+      clear: both;
+      display: table;
+      content: ""; }
+  .feed__foot .send-code {
+    margin: 0;
+    color: white; }
+    .feed__foot .send-code:after {
+      clear: both;
+      display: table;
+      content: ""; }
