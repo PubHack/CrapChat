@@ -5,7 +5,7 @@
 
 	@foreach ($craps as $crap)
 		
-			<div class="feed__single" style="margin-right: 10px;">
+			<div class="feed__single" style="margin-right: 10px; margin-bottom: 10px;">
 				<img src="/crap/classy/{{ $crap->key }}" alt="">
 				<div class="feed__foot">
 					<h1 class="sender-name">
@@ -33,7 +33,7 @@
 </div>
 
 <script type="text/foo" id="footemplate">
-			<div class="feed__single" style="margin-right: 10px;">
+			<div class="feed__single" style="margin-right: 10px; margin-bottom: 10px;">
 				<img src="" alt="" class="x-img">
 				<div class="feed__foot">
 					<h1 class="sender-name">

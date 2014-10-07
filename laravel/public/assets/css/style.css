@@ -514,7 +514,7 @@ body {
     content: ""; }
 .feed__single {
   float: left;
-  width: 20%;
+  width: calc(20% - 10px);
   position: relative; }
   .feed__single img {
     max-width: 100%;

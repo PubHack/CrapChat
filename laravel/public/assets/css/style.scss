@@ -266,7 +266,7 @@ body {
 	}
 	&__single {
 		float: left;
-		width: 20%;
+		width: calc(20% - 10px);
 		position: relative;
 		img {
 			max-width: 100%;
