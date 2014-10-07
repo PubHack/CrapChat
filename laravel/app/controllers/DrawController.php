@@ -1,12 +1,18 @@
 <?php
 
 use CrapChat\ColorMap;
-use Illuminate\View\Factory;
+use Illuminate\Http\Request;
+use Illuminate\View\Factory as ViewFactory;
 
 class DrawController extends BaseController {
 
     /**
-     * @var Factory
+     * @var Request
+     */
+    private $request;
+
+    /**
+     * @var ViewFactory
      */
     private $view;
 
@@ -15,16 +21,11 @@ class DrawController extends BaseController {
      */
     private $colorMap;
 
-    /**
-     * @var \CrapChat\ImageGenerator
-     */
-    private $imageGenerator;
-
-    public function __construct(Factory $view, ColorMap $colorMap, \CrapChat\ImageGenerator $imageGenerator)
+    public function __construct(Request $request, ViewFactory $view, ColorMap $colorMap)
     {
+        $this->request = $request;
         $this->view = $view;
         $this->colorMap = $colorMap;
-        $this->imageGenerator = $imageGenerator;
     }
 
     public function showDraw()
@@ -32,6 +33,15 @@ class DrawController extends BaseController {
         return $this->view->make('draw', [
             'colors' => $this->formatColors(),
         ]);
+    }
+
+    public function storeDrawing()
+    {
+        $x = $this->request->get('drawing');
+        $gen = App::make(\CrapChat\ImageGenerator::class);
+        $foo = $gen->fromNumbers(explode(',', $x));
+        $foo->writeImage(storage_path().'/'.uniqid('crapchat', true).'.jpg');
+        return new \Illuminate\Http\Response($foo, 200, ['Content-Type' => 'image/jpg']);
     }
 
     private function formatColors()

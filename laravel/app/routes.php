@@ -19,4 +19,7 @@ Route::get('/', function()
 Route::post('call', 'CallController@index');
 Route::post('call/users', 'CallController@listUsers');
 Route::post('call/test', 'CallController@test');
+
 Route::get('/draw', 'DrawController@showDraw');
+Route::post('/draw', 'DrawController@storeDrawing');
+

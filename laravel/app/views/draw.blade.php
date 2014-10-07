@@ -36,6 +36,11 @@
 	@endforeach
 </div>
 
+<form action="/draw" method="post">
+	<input type="text" id="output" name="drawing">
+	<button id="generate">Generate Code</button>
+</form>
+
 <table>
 	<?php for ($i=0; $i < $size; $i++) : ?>
 		<tr>
@@ -46,9 +51,6 @@
 		</tr>
 	<?php endfor; ?>
 </table>
-
-<button id="generate">Generate Code</button>
-<pre id="output"></pre>
 
 <script>
 	var colorMap = (function() {
@@ -104,24 +106,7 @@
 			return colorMap.fromColor(background);
 		});
 
-		var compr = [];
-		var last = null;
-
-		output.forEach(function(curr) {
-			if (curr === last) {
-				lastInArray(compr).count++;
-			}
-			else if (compr) {
-				compr.push({ value: curr, count: 1 });
-			}
-			last = curr;
-		});
-
-		var str = compr.map(function(curr) {
-			return curr.count + '*' + curr.value;
-		}).join(' ');
-
-		document.querySelector('#output').textContent = str;
+		document.querySelector('#output').value = output;
 	});
 </script>
 
